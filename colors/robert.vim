@@ -11,8 +11,8 @@ endif
 hi clear
 
 " decor
+hi def Bald       ctermfg=NONE ctermbg=NONE cterm=NONE
 hi def Bold       ctermfg=NONE ctermbg=NONE cterm=bold
-hi def Clear      ctermfg=NONE ctermbg=NONE cterm=NONE
 hi def Reverse    ctermfg=NONE ctermbg=NONE cterm=reverse
 hi def Standout   ctermfg=NONE ctermbg=NONE cterm=standout
 hi def Underline  ctermfg=NONE ctermbg=NONE cterm=underline
@@ -51,8 +51,9 @@ hi! link Comment          Gray
 hi! link Conceal          Black
 hi! link Conditional      Blue
 hi! link Constant         Bold
-hi! link Cursor           Clear
+hi! link Cursor           Bald
 hi! link CursorColumn     Reverse
+hi! link CursorIM         Bald
 hi! link CursorLine       Bold
 hi! link CursorLineNr     Bold
 hi! link Debug            Fail
@@ -68,6 +69,7 @@ hi! link Error            Red0
 hi! link ErrorMsg         Red0
 hi! link Exception        Fail
 hi! link Float            Blue
+hi! link FoldColumn       Mute
 hi! link Folded           Mute
 hi! link Function         Bold
 hi! link Identifier       Red
@@ -77,13 +79,14 @@ hi! link IncSearch        Reverse
 hi! link Keyword          Magenta
 hi! link Label            Blue
 hi! link LineNr           Gray
+hi! link Menu             Underline
 hi! link Macro            Underline
 hi! link MatchParen       Reverse
 hi! link ModeMsg          Bold
 hi! link MoreMsg          Underline
 hi! link Noise            Gray
 hi! link NonText          White
-hi! link Normal           Clear
+hi! link Normal           Bald
 hi! link Number           Blue
 hi! link Operator         Black
 hi! link Pmenu            Bold
@@ -95,6 +98,7 @@ hi! link PreProc          Black
 hi! link Question         Standout
 hi! link QuickFixLine     Magenta0
 hi! link Repeat           Blue
+hi! link Scrollbar        Black
 hi! link Search           Magenta0
 hi! link SignColumn       Black
 hi! link Special          Black
@@ -117,8 +121,10 @@ hi! link TabLine          Bold
 hi! link TabLineFill      Reverse
 hi! link TabLineSel       Underline
 hi! link Tag              Bold
+hi! link Terminal         Bald
 hi! link Title            Bold
 hi! link Todo             Green0
+hi! link Tooltip          Bald
 hi! link ToolbarButton    Reverse
 hi! link ToolbarLine      Reverse
 hi! link Type             Red
