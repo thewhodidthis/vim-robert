@@ -1,3 +1,8 @@
+" for the sake of avoiding a few extra quotes
+if v:version < 801
+  finish
+endif
+
 " gordon?
 let g:colors_name="robert"
 
