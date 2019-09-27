@@ -1,1 +1,1 @@
-> This way I just need edit ANSI colors in my terminal
+> This way I only need edit colors in my terminal
