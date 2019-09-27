@@ -127,7 +127,7 @@ let s:robert = #{
   \WildMenu         : s:underline,
 \}
 
-" reset
+" start from scratch
 highlight clear
 
 " restore defaults
@@ -140,7 +140,7 @@ for [group, value] in items(s:robert)
   execute "highlight" group value
 endfor
 
-" sytax specific overrides
+" syntax specific overrides
 highlight link htmlSpecialTagName Normal
 highlight link javaScript Normal
 highlight link javaScriptException Identifier
