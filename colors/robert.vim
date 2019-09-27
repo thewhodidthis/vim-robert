@@ -104,7 +104,7 @@ let s:robert = #{
   \SpellCap         : s:blue,
   \SpellLocal       : s:underline,
   \SpellRare        : s:bark,
-  \Statement        : s:blue,
+  \Statement        : s:magenta,
   \StatusLine       : s:bold,
   \StatusLineNC     : s:mute,
   \StatusLineTerm   : s:blue,
