@@ -142,8 +142,9 @@ endfor
 
 " syntax specific overrides
 highlight link htmlSpecialTagName Normal
-highlight link htmlEndTag htmlEndTag
+highlight link htmlEndTag htmlTag
 highlight link javaScript Normal
 highlight link javaScriptException Identifier
 highlight link javaScriptLabel Normal
 highlight link markdownItalic Normal
+highlight link cssHacks cssAttrRegion
