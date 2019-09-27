@@ -1,137 +1,146 @@
-" promote terminal based color palette in the same vain as
-" https://jeffkreeftmeijer.com/vim-16-color/
-let colors_name="robert"
+" gordon?
+let g:colors_name="robert"
+
+" decor
+let s:bald      = "ctermfg=NONE ctermbg=NONE cterm=NONE"
+let s:bold      = "ctermfg=NONE ctermbg=NONE cterm=bold"
+let s:reverse   = "ctermfg=NONE ctermbg=NONE cterm=reverse"
+let s:standout  = "ctermfg=NONE ctermbg=NONE cterm=standout"
+let s:underline = "ctermfg=NONE ctermbg=NONE cterm=underline"
+
+" color
+let s:black   = "ctermfg=0  ctermbg=NONE cterm=NONE"
+let s:blue    = "ctermfg=4  ctermbg=NONE cterm=NONE"
+let s:cyan    = "ctermfg=6  ctermbg=NONE cterm=NONE"
+let s:gray    = "ctermfg=7  ctermbg=NONE cterm=NONE"
+let s:green   = "ctermfg=2  ctermbg=NONE cterm=NONE"
+let s:magenta = "ctermfg=5  ctermbg=NONE cterm=NONE"
+let s:red     = "ctermfg=1  ctermbg=NONE cterm=NONE"
+let s:white   = "ctermfg=15 ctermbg=NONE cterm=NONE"
+let s:yellow  = "ctermfg=3  ctermbg=NONE cterm=NONE"
+
+" color flip
+let s:_green   = "ctermfg=2 ctermbg=NONE cterm=reverse"
+let s:_magenta = "ctermfg=5 ctermbg=NONE cterm=reverse"
+let s:_red     = "ctermfg=1 ctermbg=NONE cterm=reverse"
+
+" combo
+let s:bark = "ctermfg=0 ctermbg=NONE cterm=bold,underline"
+let s:fail = "ctermfg=1 ctermbg=NONE cterm=bold"
+let s:mute = "ctermfg=7 ctermbg=NONE cterm=bold"
+let s:pass = "ctermfg=2 ctermbg=NONE cterm=bold"
+let s:warn = "ctermfg=3 ctermbg=NONE cterm=bold"
+let s:wolf = "ctermfg=7 ctermbg=NONE cterm=underline" " odd one out
+
+" use hash prefix to skip quoting of keys
+let s:robert = #{
+  \Boolean:          s:red,
+  \Character:        s:blue,
+  \ColorColumn:      s:black,
+  \Comment:          s:gray,
+  \Conceal:          s:black,
+  \Conditional:      s:blue,
+  \Constant:         s:bold,
+  \Cursor:           s:bald,
+  \CursorColumn:     s:reverse,
+  \CursorIM:         s:bald,
+  \CursorLine:       s:bold,
+  \CursorLineNr:     s:bold,
+  \Debug:            s:fail,
+  \Define:           s:fail,
+  \Delimiter:        s:bold,
+  \DiffAdd:          s:pass,
+  \DiffChange:       s:warn,
+  \DiffDelete:       s:fail,
+  \DiffText:         s:black,
+  \Directory:        s:bold,
+  \EndOfBuffer:      s:white,
+  \Error:            s:_red,
+  \ErrorMsg:         s:_red,
+  \Exception:        s:fail,
+  \Float:            s:blue,
+  \FoldColumn:       s:wolf,
+  \Folded:           s:mute,
+  \Function:         s:bold,
+  \Identifier:       s:red,
+  \Ignore:           s:blue,
+  \Include:          s:blue,
+  \IncSearch:        s:reverse,
+  \Keyword:          s:magenta,
+  \Label:            s:blue,
+  \LineNr:           s:gray,
+  \Menu:             s:underline,
+  \Macro:            s:underline,
+  \MatchParen:       s:reverse,
+  \ModeMsg:          s:bold,
+  \MoreMsg:          s:underline,
+  \Noise:            s:gray,
+  \NonText:          s:white,
+  \Normal:           s:bald,
+  \Number:           s:blue,
+  \Operator:         s:black,
+  \Pmenu:            s:bold,
+  \PmenuSbar:        s:black,
+  \PmenuSel:         s:underline,
+  \PmenuThumb:       s:black,
+  \PreCondit:        s:blue,
+  \PreProc:          s:black,
+  \Question:         s:standout,
+  \QuickFixLine:     s:_magenta,
+  \Repeat:           s:blue,
+  \Scrollbar:        s:black,
+  \Search:           s:_magenta,
+  \SignColumn:       s:black,
+  \Special:          s:blue,
+  \SpecialChar:      s:bold,
+  \SpecialComment:   s:black,
+  \SpecialKey:       s:green,
+  \SpellBad:         s:fail,
+  \SpellCap:         s:blue,
+  \SpellLocal:       s:underline,
+  \SpellRare:        s:bark,
+  \Statement:        s:blue,
+  \StatusLine:       s:bold,
+  \StatusLineNC:     s:mute,
+  \StatusLineTerm:   s:blue,
+  \StatusLineTermNC: s:bark,
+  \StorageClass:     s:underline,
+  \String:           s:blue,
+  \Structure:        s:red,
+  \TabLine:          s:bold,
+  \TabLineFill:      s:reverse,
+  \TabLineSel:       s:underline,
+  \Tag:              s:bold,
+  \Terminal:         s:bald,
+  \Title:            s:bold,
+  \Todo:             s:_green,
+  \Tooltip:          s:bald,
+  \ToolbarButton:    s:reverse,
+  \ToolbarLine:      s:reverse,
+  \Type:             s:red,
+  \Typedef:          s:underline,
+  \Underlined:       s:underline,
+  \VertSplit:        s:mute,
+  \Visual:           s:reverse,
+  \VisualNOS:        s:bark,
+  \WarningMsg:       s:standout,
+  \WildMenu:         s:underline,
+\}
+
+" reset
+highlight clear
 
 " restore defaults
 if exists("syntax_on")
   syntax reset
 endif
 
-" start from scratch, define own groups below
-hi clear
+" colorize
+for [group, value] in items(s:robert)
+  execute "highlight" group value
+endfor
 
-" decor
-hi def Bald       ctermfg=NONE ctermbg=NONE cterm=NONE
-hi def Bold       ctermfg=NONE ctermbg=NONE cterm=bold
-hi def Reverse    ctermfg=NONE ctermbg=NONE cterm=reverse
-hi def Standout   ctermfg=NONE ctermbg=NONE cterm=standout
-hi def Underline  ctermfg=NONE ctermbg=NONE cterm=underline
-
-" color
-hi def Black      ctermfg=0    ctermbg=NONE cterm=NONE
-hi def Blue       ctermfg=4    ctermbg=NONE cterm=NONE
-hi def Cyan       ctermfg=6    ctermbg=NONE cterm=NONE
-hi def Gray       ctermfg=7    ctermbg=NONE cterm=NONE
-hi def Green      ctermfg=2    ctermbg=NONE cterm=NONE
-hi def Magenta    ctermfg=5    ctermbg=NONE cterm=NONE
-hi def Red        ctermfg=1    ctermbg=NONE cterm=NONE
-hi def White      ctermfg=15   ctermbg=NONE cterm=NONE
-hi def Yellow     ctermfg=3    ctermbg=NONE cterm=NONE
-
-" color flip
-hi def Green0     ctermfg=2    ctermbg=NONE cterm=reverse
-hi def Magenta0   ctermfg=5    ctermbg=NONE cterm=reverse
-hi def Red0       ctermfg=1    ctermbg=NONE cterm=reverse
-
-" combo
-hi def Bark       ctermfg=NONE ctermbg=NONE cterm=bold,underline
-hi def Fail       ctermfg=1    ctermbg=NONE cterm=bold
-hi def Mute       ctermfg=7    ctermbg=NONE cterm=bold
-hi def Pass       ctermfg=2    ctermbg=NONE cterm=bold
-hi def Warn       ctermfg=3    ctermbg=NONE cterm=bold
-
-" odd one out
-hi FoldColumn     ctermfg=7    ctermbg=NONE cterm=underline
-
-" the bang required to override default highlight groups
-hi! link Boolean          Red
-hi! link Character        Blue
-hi! link ColorColumn      Black
-hi! link Comment          Gray
-hi! link Conceal          Black
-hi! link Conditional      Blue
-hi! link Constant         Bold
-hi! link Cursor           Bald
-hi! link CursorColumn     Reverse
-hi! link CursorIM         Bald
-hi! link CursorLine       Bold
-hi! link CursorLineNr     Bold
-hi! link Debug            Fail
-hi! link Define           Fail
-hi! link Delimiter        Bold
-hi! link DiffAdd          Pass
-hi! link DiffChange       Warn
-hi! link DiffDelete       Fail
-hi! link DiffText         Black
-hi! link Directory        Bold
-hi! link EndOfBuffer      White
-hi! link Error            Red0
-hi! link ErrorMsg         Red0
-hi! link Exception        Fail
-hi! link Float            Blue
-hi! link FoldColumn       Mute
-hi! link Folded           Mute
-hi! link Function         Bold
-hi! link Identifier       Red
-hi! link Ignore           Blue
-hi! link Include          Blue
-hi! link IncSearch        Reverse
-hi! link Keyword          Magenta
-hi! link Label            Blue
-hi! link LineNr           Gray
-hi! link Menu             Underline
-hi! link Macro            Underline
-hi! link MatchParen       Reverse
-hi! link ModeMsg          Bold
-hi! link MoreMsg          Underline
-hi! link Noise            Gray
-hi! link NonText          White
-hi! link Normal           Bald
-hi! link Number           Blue
-hi! link Operator         Black
-hi! link Pmenu            Bold
-hi! link PmenuSbar        Black
-hi! link PmenuSel         Underline
-hi! link PmenuThumb       Black
-hi! link PreCondit        Blue
-hi! link PreProc          Black
-hi! link Question         Standout
-hi! link QuickFixLine     Magenta0
-hi! link Repeat           Blue
-hi! link Scrollbar        Black
-hi! link Search           Magenta0
-hi! link SignColumn       Black
-hi! link Special          Black
-hi! link SpecialChar      Bold
-hi! link SpecialComment   Black
-hi! link SpecialKey       Fail
-hi! link SpellBad         Fail
-hi! link SpellCap         Blue
-hi! link SpellLocal       Underline
-hi! link SpellRare        Bark
-hi! link Statement        Blue
-hi! link StatusLine       Bold
-hi! link StatusLineNC     Mute
-hi! link StatusLineTerm   Blue
-hi! link StatusLineTermNC Bark
-hi! link StorageClass     Underline
-hi! link String           Blue
-hi! link Structure        Red
-hi! link TabLine          Bold
-hi! link TabLineFill      Reverse
-hi! link TabLineSel       Underline
-hi! link Tag              Bold
-hi! link Terminal         Bald
-hi! link Title            Bold
-hi! link Todo             Green0
-hi! link Tooltip          Bald
-hi! link ToolbarButton    Reverse
-hi! link ToolbarLine      Reverse
-hi! link Type             Red
-hi! link Typedef          Underline
-hi! link Underlined       Underline
-hi! link VertSplit        Mute
-hi! link Visual           Reverse
-hi! link VisualNOS        Bark
-hi! link WarningMsg       Standout
-hi! link WildMenu         Underline
+" sytax specific overrides
+highlight link htmlSpecialTagName Normal
+highlight link javaScript Normal
+highlight link javaScriptException Identifier
