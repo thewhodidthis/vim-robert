@@ -78,7 +78,7 @@ let s:robert = {
   \"NonText"          : s:white,
   \"Normal"           : s:bald,
   \"Number"           : s:blue,
-  \"Operator"         : s:black,
+  \"Operator"         : s:cyan,
   \"Pmenu"            : s:bold,
   \"PmenuSbar"        : s:black,
   \"PmenuSel"         : s:underline,
