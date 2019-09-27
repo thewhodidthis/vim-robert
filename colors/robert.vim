@@ -91,7 +91,7 @@ let s:robert = {
   \"Scrollbar"        : s:black,
   \"Search"           : s:_magenta,
   \"SignColumn"       : s:black,
-  \"Special"          : s:gray,
+  \"Special"          : s:cyan,
   \"SpecialChar"      : s:bold,
   \"SpecialComment"   : s:black,
   \"SpecialKey"       : s:green,
