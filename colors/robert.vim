@@ -23,6 +23,7 @@ let s:yellow  = "ctermfg=3  ctermbg=NONE cterm=NONE"
 let s:_green   = "ctermfg=2 ctermbg=NONE cterm=reverse"
 let s:_magenta = "ctermfg=5 ctermbg=NONE cterm=reverse"
 let s:_red     = "ctermfg=1 ctermbg=NONE cterm=reverse"
+let s:_yellow  = "ctermfg=3 ctermbg=0    cterm=reverse"
 
 " combo
 let s:bark = "ctermfg=0 ctermbg=NONE cterm=bold,underline"
@@ -89,7 +90,7 @@ let s:robert = {
   \"QuickFixLine"     : s:_magenta,
   \"Repeat"           : s:blue,
   \"Scrollbar"        : s:black,
-  \"Search"           : s:_magenta,
+  \"Search"           : s:_yellow,
   \"SignColumn"       : s:black,
   \"Special"          : s:cyan,
   \"SpecialChar"      : s:bold,
