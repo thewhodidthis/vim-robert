@@ -1,1 +1,36 @@
-> This way I only need edit colors in my terminal
+In the interest of dressing up terminal based applications like Git and Vim in matching colors, but also to make life easier when it comes to setting up a new workstation, it helps having the color scheme defined in one place: your *terminal emulator preference panel*.
+
+With `git-config` the `https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorui[color.ui]` default is `auto` and for Vim it's possible to use https://jeffkreeftmeijer.com/vim-16-color/#terminal-colors-and-ansi-escape-sequences[number variables] for each of the base 16 colors instead of https://github.com/chriskempson/base16-vim/blob/master/colors/base16-eighties.vim#L17[harcoding their values] in your theme. And Vim `:highlight` makes it easy to experiment inline before investing,
+
+```vim
+" No color, no background, no nothing
+:hi Normal ctermfg=NONE ctermbg=NONE cterm=NONE
+:hi link javaScript Normal " Copy settings over to the `javaScript` highlight group
+" Get help not mad
+:help hi
+```
+
+Or,
+
+```vim
+" Keep it DRY and define a blue (4) style for assigning to multiple groups
+let s:blue = "ctermfg=4 ctermbg=NONE cterm=NONE"
+:hi Normal s:blue " Expect linked `javaScript` to reflect changes
+```
+
+Then it's a case of figuring out respective https://jordanelver.co.uk/blog/2015/05/27/working-with-vim-colorschemes/#showing-highlight-groups[highlight groups] and how they fit together with each language syntax. But font styling is also possible, using *bold* or __underlined__ text for example.
+
+image::https://i.imgur.com/Zfu6Z53.png[Vim color preview]
+
+If https://shapeshed.com/vim-packages/[running Vim 8] and later, `git clone` within your `~/.vim/pack/<foo>/start` folder along with the rest of your plugins to install. Then in `.vimrc` potentially,
+
+```vim
+" disable coloring altogether if chosen scheme unavailable
+try
+  colorscheme robert
+catch
+  set t_Co=0
+endtry
+```
+
+For portability I also keep a copy of my https://gist.github.com/thewhodidthis/52f30f8221e64ff92807d911f0d1fd3a[Terminal.app settings] version checked as well.
