@@ -1,3 +1,11 @@
+" start from scratch
+highlight clear
+
+" restore defaults
+if exists("syntax_on")
+  syntax reset
+endif
+
 " gordon?
 let g:colors_name = "robert"
 
@@ -127,14 +135,6 @@ let s:robert = {
   \"WarningMsg"       : s:standout,
   \"WildMenu"         : s:underline,
 \}
-
-" start from scratch
-highlight clear
-
-" restore defaults
-if exists("syntax_on")
-  syntax reset
-endif
 
 " colorize
 for [group, value] in items(s:robert)
